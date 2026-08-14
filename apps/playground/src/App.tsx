@@ -106,6 +106,42 @@ const BACKGROUND_OPTIONS: {
     swatch: '#F59E0B',
   },
   {
+    id: 'bg-mist',
+    label: 'Mist',
+    value: ['#F1F5F9'],
+    swatch: '#F1F5F9',
+  },
+  {
+    id: 'bg-ice',
+    label: 'Ice',
+    value: ['#EEF2FF'],
+    swatch: '#EEF2FF',
+  },
+  {
+    id: 'bg-lilac',
+    label: 'Lilac',
+    value: ['#F3E8FF'],
+    swatch: '#F3E8FF',
+  },
+  {
+    id: 'bg-sky',
+    label: 'Sky',
+    value: ['#E0F2FE'],
+    swatch: '#E0F2FE',
+  },
+  {
+    id: 'bg-mint',
+    label: 'Mint',
+    value: ['#ECFDF5'],
+    swatch: '#ECFDF5',
+  },
+  {
+    id: 'bg-blush',
+    label: 'Blush',
+    value: ['#FFF1F2'],
+    swatch: '#FFF1F2',
+  },
+  {
     id: 'bg-brand',
     label: 'Violet → Blue',
     value: LOADER_COLOR_GRADIENT,
@@ -124,6 +160,92 @@ const BACKGROUND_OPTIONS: {
     swatch: 'linear-gradient(135deg, #F43F5E, #F59E0B)',
   },
 ];
+
+const TEXT_COLOR_OPTIONS: {
+  id: string;
+  label: string;
+  value?: string;
+  swatch?: string;
+}[] = [
+  { id: 'default', label: 'Default' },
+  {
+    id: 'navy',
+    label: 'Navy',
+    value: '#14212B',
+    swatch: '#14212B',
+  },
+  {
+    id: 'slate',
+    label: 'Slate',
+    value: '#475569',
+    swatch: '#475569',
+  },
+  {
+    id: 'white',
+    label: 'White',
+    value: '#F8FAFC',
+    swatch: '#F8FAFC',
+  },
+  {
+    id: 'indigo',
+    label: 'Indigo',
+    value: '#4F46E5',
+    swatch: '#4F46E5',
+  },
+  {
+    id: 'violet',
+    label: 'Violet',
+    value: '#7C3AED',
+    swatch: '#7C3AED',
+  },
+  {
+    id: 'rose',
+    label: 'Rose',
+    value: '#E11D48',
+    swatch: '#E11D48',
+  },
+  {
+    id: 'emerald',
+    label: 'Emerald',
+    value: '#047857',
+    swatch: '#047857',
+  },
+];
+
+function TextColorSwatches({
+  activeId,
+  onChange,
+}: {
+  activeId: string;
+  onChange: (id: string) => void;
+}) {
+  return (
+    <div className="appearance__swatches" role="list">
+      {TEXT_COLOR_OPTIONS.map((option) => (
+        <button
+          key={option.id}
+          type="button"
+          className={
+            activeId === option.id ? 'swatch swatch--active' : 'swatch'
+          }
+          title={option.label}
+          aria-label={option.label}
+          aria-pressed={activeId === option.id}
+          onClick={() => onChange(option.id)}
+        >
+          <span
+            className={
+              option.id === 'default'
+                ? 'swatch__fill swatch__fill--none'
+                : 'swatch__fill'
+            }
+            style={option.swatch ? { background: option.swatch } : undefined}
+          />
+        </button>
+      ))}
+    </div>
+  );
+}
 
 const COLOR_OPTIONS = [
   {
@@ -432,6 +554,8 @@ export function App() {
   const [loaderSize, setLoaderSize] = useState<LoaderSize>('md');
   const [backgroundId, setBackgroundId] = useState('none');
   const [backgroundOpacity, setBackgroundOpacity] = useState(0.16);
+  const [titleColorId, setTitleColorId] = useState('default');
+  const [descriptionColorId, setDescriptionColorId] = useState('default');
   const [colorId, setColorId] =
     useState<(typeof COLOR_OPTIONS)[number]['id']>('indigo');
   const [navOpen, setNavOpen] = useState(false);
@@ -469,6 +593,12 @@ export function App() {
   const surfaceBackground =
     BACKGROUND_OPTIONS.find((option) => option.id === backgroundId)?.value ??
     'none';
+  const titleColor = TEXT_COLOR_OPTIONS.find(
+    (option) => option.id === titleColorId,
+  )?.value;
+  const descriptionColor = TEXT_COLOR_OPTIONS.find(
+    (option) => option.id === descriptionColorId,
+  )?.value;
 
   const animateDemoProgress =
     effectiveMode === 'loading' &&
@@ -497,6 +627,12 @@ export function App() {
       emptyBackgroundOpacity: backgroundOpacity,
       errorBackground: effectiveMode === 'error' ? surfaceBackground : 'none',
       errorBackgroundOpacity: backgroundOpacity,
+      loadingTitleColor: titleColor,
+      loadingDescriptionColor: descriptionColor,
+      emptyTitleColor: titleColor,
+      emptyDescriptionColor: descriptionColor,
+      errorTitleColor: titleColor,
+      errorDescriptionColor: descriptionColor,
       loaderProgress: animateDemoProgress ? demoProgress : undefined,
       onRetry: startRetry,
     }),
@@ -504,6 +640,7 @@ export function App() {
       animateDemoProgress,
       backgroundOpacity,
       demoProgress,
+      descriptionColor,
       effectiveLoaderType,
       effectiveMode,
       layout,
@@ -512,6 +649,7 @@ export function App() {
       retrying,
       startRetry,
       surfaceBackground,
+      titleColor,
     ],
   );
 
@@ -990,6 +1128,26 @@ export function App() {
                             />
                           </div>
                         ) : null}
+                      </section>
+                    ) : null}
+
+                    {showSurfaceBackground ? (
+                      <section className="appearance__group">
+                        <h3 className="appearance__label">Title</h3>
+                        <TextColorSwatches
+                          activeId={titleColorId}
+                          onChange={setTitleColorId}
+                        />
+                      </section>
+                    ) : null}
+
+                    {showSurfaceBackground ? (
+                      <section className="appearance__group">
+                        <h3 className="appearance__label">Description</h3>
+                        <TextColorSwatches
+                          activeId={descriptionColorId}
+                          onChange={setDescriptionColorId}
+                        />
                       </section>
                     ) : null}
                   </div>

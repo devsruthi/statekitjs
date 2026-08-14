@@ -18,6 +18,8 @@ import type {
 export type RenderLoadingOptions = {
   title?: string;
   description?: string;
+  titleColor?: string;
+  descriptionColor?: string;
   type?: LoaderType;
   size?: LoaderSize;
   color?: LoaderColor;
@@ -36,6 +38,8 @@ export function renderLoading(
   {
     title,
     description,
+    titleColor,
+    descriptionColor,
     type,
     size,
     color,
@@ -58,6 +62,8 @@ export function renderLoading(
       return createElement(DefaultLoading, {
         title,
         description,
+        titleColor,
+        descriptionColor,
         type,
         size,
         color,

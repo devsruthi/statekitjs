@@ -77,6 +77,14 @@ export type LoadingProps = {
    */
   description?: string;
   /**
+   * CSS color for the title.
+   */
+  titleColor?: string;
+  /**
+   * CSS color for the description.
+   */
+  descriptionColor?: string;
+  /**
    * Progress percentage (0–100) for `progress-circle` and `progress-bar`.
    */
   progress?: number;
@@ -112,6 +120,8 @@ export function Loading({
   subtext,
   title,
   description,
+  titleColor,
+  descriptionColor,
   progress,
 }: LoadingProps): ReactElement {
   const label = text ?? title ?? LOADER_DEFAULTS.text;
@@ -150,8 +160,20 @@ export function Loading({
         <LoaderGraphic type={type} color={color} progress={progress} />
       </div>
       <div className={surface.copy}>
-        <h2 className={surface.title}>{label}</h2>
-        {detail ? <p className={surface.description}>{detail}</p> : null}
+        <h2
+          className={surface.title}
+          style={titleColor ? { color: titleColor } : undefined}
+        >
+          {label}
+        </h2>
+        {detail ? (
+          <p
+            className={surface.description}
+            style={descriptionColor ? { color: descriptionColor } : undefined}
+          >
+            {detail}
+          </p>
+        ) : null}
       </div>
     </section>
   );

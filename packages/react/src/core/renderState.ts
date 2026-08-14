@@ -34,13 +34,19 @@ export type RenderStateOptions = {
   loaderProgress?: number;
   loadingTitle?: string;
   loadingDescription?: string;
+  loadingTitleColor?: string;
+  loadingDescriptionColor?: string;
   emptyTitle?: string;
   emptyDescription?: string;
+  emptyTitleColor?: string;
+  emptyDescriptionColor?: string;
   emptyIcon?: ReactNode;
   emptyBackground?: SurfaceBackground;
   emptyBackgroundOpacity?: number;
   errorTitle?: string;
   errorDescription?: string;
+  errorTitleColor?: string;
+  errorDescriptionColor?: string;
   errorIcon?: ReactNode;
   errorBackground?: SurfaceBackground;
   errorBackgroundOpacity?: number;
@@ -76,13 +82,19 @@ export function renderState(
     loaderProgress,
     loadingTitle,
     loadingDescription,
+    loadingTitleColor,
+    loadingDescriptionColor,
     emptyTitle,
     emptyDescription,
+    emptyTitleColor,
+    emptyDescriptionColor,
     emptyIcon,
     emptyBackground,
     emptyBackgroundOpacity,
     errorTitle,
     errorDescription,
+    errorTitleColor,
+    errorDescriptionColor,
     errorIcon,
     errorBackground,
     errorBackgroundOpacity,
@@ -105,6 +117,8 @@ export function renderState(
       return renderLoading(layout, {
         title: loadingTitle,
         description: loadingDescription,
+        titleColor: loadingTitleColor,
+        descriptionColor: loadingDescriptionColor,
         type: loaderType,
         size: loaderSize,
         color: loaderColor,
@@ -124,6 +138,8 @@ export function renderState(
         error: resolved.error,
         title: errorTitle,
         description: errorDescription,
+        titleColor: errorTitleColor,
+        descriptionColor: errorDescriptionColor,
         icon: errorIcon,
         onRetry,
         retryLabel: errorRetryLabel,
@@ -142,6 +158,8 @@ export function renderState(
       return createElement(Empty, {
         title: emptyTitle,
         description: emptyDescription,
+        titleColor: emptyTitleColor,
+        descriptionColor: emptyDescriptionColor,
         icon: emptyIcon,
         background: emptyBackground,
         backgroundOpacity: emptyBackgroundOpacity,
