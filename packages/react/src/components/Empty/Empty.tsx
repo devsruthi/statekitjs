@@ -20,6 +20,14 @@ export type EmptyProps = {
    */
   description?: string;
   /**
+   * CSS color for the title.
+   */
+  titleColor?: string;
+  /**
+   * CSS color for the description.
+   */
+  descriptionColor?: string;
+  /**
    * Replaces the entire built-in empty icon SVG.
    * When set, the default search icon is not rendered.
    */
@@ -62,6 +70,8 @@ function DefaultEmptyIcon(): ReactElement {
 export function Empty({
   title = 'No records found',
   description = 'There are no records to display.',
+  titleColor,
+  descriptionColor,
   icon,
   background = SURFACE_BACKGROUND_DEFAULTS.background,
   backgroundOpacity = SURFACE_BACKGROUND_DEFAULTS.backgroundOpacity,
@@ -82,8 +92,18 @@ export function Empty({
         {icon != null ? icon : <DefaultEmptyIcon />}
       </div>
       <div className={surface.copy}>
-        <h2 className={surface.title}>{title}</h2>
-        <p className={surface.description}>{description}</p>
+        <h2
+          className={surface.title}
+          style={titleColor ? { color: titleColor } : undefined}
+        >
+          {title}
+        </h2>
+        <p
+          className={surface.description}
+          style={descriptionColor ? { color: descriptionColor } : undefined}
+        >
+          {description}
+        </p>
       </div>
     </section>
   );

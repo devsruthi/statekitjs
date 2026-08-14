@@ -156,6 +156,18 @@ export const STATE_PROPS = [
     description: 'Description for the default loading UI.',
   },
   {
+    prop: 'loadingTitleColor',
+    type: 'string',
+    defaultValue: '—',
+    description: 'CSS color for the default loading title.',
+  },
+  {
+    prop: 'loadingDescriptionColor',
+    type: 'string',
+    defaultValue: '—',
+    description: 'CSS color for the default loading description.',
+  },
+  {
     prop: 'emptyTitle',
     type: 'string',
     defaultValue: '"No records found"',
@@ -166,6 +178,18 @@ export const STATE_PROPS = [
     type: 'string',
     defaultValue: '"There are no records to display."',
     description: 'Description for the default empty UI.',
+  },
+  {
+    prop: 'emptyTitleColor',
+    type: 'string',
+    defaultValue: '—',
+    description: 'CSS color for the default empty title.',
+  },
+  {
+    prop: 'emptyDescriptionColor',
+    type: 'string',
+    defaultValue: '—',
+    description: 'CSS color for the default empty description.',
   },
   {
     prop: 'emptyIcon',
@@ -190,6 +214,18 @@ export const STATE_PROPS = [
     type: 'string',
     defaultValue: '"Unable to load the content."',
     description: 'Description for the default error UI.',
+  },
+  {
+    prop: 'errorTitleColor',
+    type: 'string',
+    defaultValue: '—',
+    description: 'CSS color for the default error title.',
+  },
+  {
+    prop: 'errorDescriptionColor',
+    type: 'string',
+    defaultValue: '—',
+    description: 'CSS color for the default error description.',
   },
   {
     prop: 'errorIcon',

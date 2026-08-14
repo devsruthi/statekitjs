@@ -71,7 +71,6 @@
   border: 1px solid #d7e0e8;
   border-radius: var(--sk-radius-sm);
   background: #ffffff;
-  /* Keep dark label even when surface flips copy to light white. */
   color: #14212b;
   font: inherit;
   font-size: var(--sk-font-size-sm);

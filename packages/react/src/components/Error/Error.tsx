@@ -25,6 +25,14 @@ export type ErrorProps = {
    */
   description?: string;
   /**
+   * CSS color for the title.
+   */
+  titleColor?: string;
+  /**
+   * CSS color for the description.
+   */
+  descriptionColor?: string;
+  /**
    * Replaces the entire built-in error icon SVG.
    * When set, the default warning triangle is not rendered.
    */
@@ -97,6 +105,8 @@ export function Error({
   error: _error,
   title = 'Something went wrong!',
   description = 'Unable to load the content.',
+  titleColor,
+  descriptionColor,
   icon,
   onRetry,
   retryLabel = 'Try again',
@@ -135,8 +145,18 @@ export function Error({
         {icon != null ? icon : <DefaultErrorIcon />}
       </div>
       <div className={surface.copy}>
-        <h2 className={surface.title}>{title}</h2>
-        <p className={surface.description}>{description}</p>
+        <h2
+          className={surface.title}
+          style={titleColor ? { color: titleColor } : undefined}
+        >
+          {title}
+        </h2>
+        <p
+          className={surface.description}
+          style={descriptionColor ? { color: descriptionColor } : undefined}
+        >
+          {description}
+        </p>
       </div>
       {retryAction}
     </section>

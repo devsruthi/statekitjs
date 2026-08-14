@@ -21,6 +21,25 @@ describe('State customization', () => {
     expect(screen.getByText('Hang tight.')).toBeInTheDocument();
   });
 
+  it('customizes loading title and description colors', () => {
+    render(
+      <State
+        loading
+        loadingTitleColor="#4F46E5"
+        loadingDescriptionColor="#64748B"
+      >
+        <div>Users</div>
+      </State>,
+    );
+
+    expect(screen.getByRole('heading', { name: 'Loading...' })).toHaveStyle({
+      color: '#4F46E5',
+    });
+    expect(screen.getByText('Please wait a moment')).toHaveStyle({
+      color: '#64748B',
+    });
+  });
+
   it('customizes default empty copy', () => {
     render(
       <State
@@ -38,6 +57,21 @@ describe('State customization', () => {
     expect(
       screen.getByText('Invite a teammate to get started.'),
     ).toBeInTheDocument();
+  });
+
+  it('customizes empty title and description colors', () => {
+    render(
+      <State empty emptyTitleColor="#1E3A8A" emptyDescriptionColor="#64748B">
+        <div>Users</div>
+      </State>,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'No records found' }),
+    ).toHaveStyle({ color: '#1E3A8A' });
+    expect(screen.getByText('There are no records to display.')).toHaveStyle({
+      color: '#64748B',
+    });
   });
 
   it('customizes the empty icon', () => {
@@ -75,6 +109,25 @@ describe('State customization', () => {
 
     await user.click(screen.getByRole('button', { name: 'Try again' }));
     expect(onRetry).toHaveBeenCalledTimes(1);
+  });
+
+  it('customizes error title and description colors', () => {
+    render(
+      <State
+        error="boom"
+        errorTitleColor="#B91C1C"
+        errorDescriptionColor="#9F1239"
+      >
+        <div>Users</div>
+      </State>,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'Something went wrong!' }),
+    ).toHaveStyle({ color: '#B91C1C' });
+    expect(screen.getByText('Unable to load the content.')).toHaveStyle({
+      color: '#9F1239',
+    });
   });
 
   it('uses a custom loading component instead of the default UI', () => {

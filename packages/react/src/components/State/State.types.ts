@@ -90,6 +90,14 @@ export type StateProps = {
    */
   loadingDescription?: string;
   /**
+   * CSS color for the default loading title.
+   */
+  loadingTitleColor?: string;
+  /**
+   * CSS color for the default loading description.
+   */
+  loadingDescriptionColor?: string;
+  /**
    * Title shown by the default empty UI.
    */
   emptyTitle?: string;
@@ -97,6 +105,14 @@ export type StateProps = {
    * Description shown by the default empty UI.
    */
   emptyDescription?: string;
+  /**
+   * CSS color for the default empty title.
+   */
+  emptyTitleColor?: string;
+  /**
+   * CSS color for the default empty description.
+   */
+  emptyDescriptionColor?: string;
   /**
    * Replaces the entire built-in empty icon SVG.
    * When set, the default search icon is not rendered.
@@ -125,6 +141,14 @@ export type StateProps = {
    * @default "Unable to load the content."
    */
   errorDescription?: string;
+  /**
+   * CSS color for the default error title.
+   */
+  errorTitleColor?: string;
+  /**
+   * CSS color for the default error description.
+   */
+  errorDescriptionColor?: string;
   /**
    * Replaces the entire built-in error icon SVG.
    * When set, the default warning triangle is not rendered.

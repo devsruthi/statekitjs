@@ -115,13 +115,11 @@ describe('Loading', () => {
     expect(status.style.background).toMatch(/#06B6D4|rgb\(6,\s*182,\s*212\)/i);
   });
 
-  it('uses light copy colors when background opacity is above 60%', () => {
-    render(<Loading background={['#4F46E5']} backgroundOpacity={0.61} />);
+  it('does not change title or description color based on background opacity', () => {
+    render(<Loading background={['#4F46E5']} backgroundOpacity={0.9} />);
 
     const status = screen.getByRole('status');
-    expect(status.style.getPropertyValue('--sk-color-fg')).toBe('#F8FAFC');
-    expect(status.style.getPropertyValue('--sk-color-fg-muted')).toContain(
-      '248',
-    );
+    expect(status.style.getPropertyValue('--sk-color-fg')).toBe('');
+    expect(status.style.getPropertyValue('--sk-color-fg-muted')).toBe('');
   });
 });
