@@ -1,5 +1,11 @@
 # @statekitjs/react
 
+## 0.2.1
+
+### Patch Changes
+
+- d14277a: fix Storybook loader styles, docs/README updates
+
 ## 0.2.0
 
 ### Minor Changes
