@@ -39,7 +39,10 @@ export default defineConfig({
   ],
   css: {
     modules: {
-      localsConvention: 'camelCaseOnly',
+      // Export class names as written (`type_spokes`, `spokesWheel`).
+      // camelCaseOnly turned `type_spokes` into `typeSpokes`, so Storybook
+      // never applied the graphic styles (copy still showed).
+      localsConvention: (name: string) => name,
     },
   },
   build: {
