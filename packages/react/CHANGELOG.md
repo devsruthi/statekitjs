@@ -1,5 +1,11 @@
 # @statekitjs/react
 
+## 0.2.2
+
+### Patch Changes
+
+- 5dbe91b: Keep loading, empty, and error title/description colors unchanged at any background opacity.
+
 ## 0.2.1
 
 ### Patch Changes
