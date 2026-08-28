@@ -1,2 +1,4 @@
 export { State } from './State';
-export type { StateProps } from './State.types';
+export { StateKitProvider, useStateConfig } from './StateKitProvider';
+export type { StateKitProviderProps } from './StateKitProvider';
+export type { StateDefaults, StateProps } from './State.types';

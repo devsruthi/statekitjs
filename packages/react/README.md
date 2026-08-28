@@ -26,7 +26,7 @@ You can explore:
 
 - **Live Demo** — try loading, empty, error, and success states interactively
 - **Loaders** — spinner and progress variants, sizes, colors, and speeds
-- **Getting Started** — installation and quick start
+- **Getting Started** — installation, quick start, and theme provider
 - **Loading / Empty / Error** — default UI, customized props, and fully custom components
 - **API props** — full `State` prop reference with types and defaults
 - **Examples & use cases** — copy-paste patterns for real apps
@@ -81,6 +81,24 @@ Customize copy, layouts, and default UI when you need to:
 >
   <UsersTable users={users} />
 </State>
+```
+
+---
+
+## Theme provider
+
+`State` has no global theme today unless you wrap the tree. Use `StateKitProvider` so a host app can map its brand (loader type, colors, copy, icons, or a fully custom `loadingComponent`) once. Props on an individual `State` still win.
+
+```tsx
+import { State, StateKitProvider } from '@statekitjs/react';
+
+<StateKitProvider
+  loaderType="activity"
+  loaderColor={[theme.primary]}
+  errorRetryLabel="Try again"
+>
+  <App />
+</StateKitProvider>
 ```
 
 ---

@@ -103,7 +103,7 @@ You can explore:
 
 - **Live Demo** — try loading, empty, error, and success states interactively
 - **Loaders** — spinner and progress variants, sizes, colors, and speeds
-- **Getting Started** — installation and quick start
+- **Getting Started** — installation, quick start, and theme provider
 - **Loading / Empty / Error** — default UI, customized props, and fully custom components
 - **API props** — full `State` prop reference with types and defaults
 - **Examples & use cases** — copy-paste patterns for real apps
@@ -151,6 +151,21 @@ function UsersPage() {
     </State>
   );
 }
+```
+
+# Theme provider
+
+Wrap the app in `StateKitProvider` to apply your brand loader, colors, and copy once. Local `State` props still override the provider.
+
+```tsx
+import { State, StateKitProvider } from "@statekitjs/react";
+
+<StateKitProvider
+  loaderType="activity"
+  loaderColor={[theme.primary]}
+>
+  <App />
+</StateKitProvider>
 ```
 
 # `State` props
