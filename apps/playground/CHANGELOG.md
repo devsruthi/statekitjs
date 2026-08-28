@@ -1,5 +1,16 @@
 # @statekit/playground
 
+## 0.1.0
+
+### Minor Changes
+
+- 9f91834: Add StateKitProvider so apps can set brand loader, colors, and copy once.
+
+### Patch Changes
+
+- Updated dependencies [9f91834]
+  - @statekitjs/react@0.3.0
+
 ## 0.0.4
 
 ### Patch Changes

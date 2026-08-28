@@ -1,6 +1,6 @@
 {
   "name": "@statekitjs/react",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Beautiful loading, empty, error, and success states for React applications.",
   "license": "MIT",
   "type": "module",
