@@ -1,5 +1,9 @@
-export { State } from './components/State';
-export type { StateProps } from './components/State';
+export { State, StateKitProvider, useStateConfig } from './components/State';
+export type {
+  StateDefaults,
+  StateKitProviderProps,
+  StateProps,
+} from './components/State';
 export type { StateLayout } from './constants/layout';
 export type {
   LoaderBackground,

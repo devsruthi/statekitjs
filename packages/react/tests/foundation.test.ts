@@ -15,5 +15,7 @@ describe('@statekit/react public API', () => {
     expect(publicApi).not.toHaveProperty('GridSkeleton');
     expect(publicApi).not.toHaveProperty('ListSkeleton');
     expect(publicApi).not.toHaveProperty('DefaultLoading');
+    expect(publicApi).toHaveProperty('StateKitProvider');
+    expect(publicApi).toHaveProperty('useStateConfig');
   });
 });

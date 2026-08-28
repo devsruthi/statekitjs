@@ -209,3 +209,13 @@ export type StateProps = {
    */
   children?: ReactNode;
 };
+
+/**
+ * Shared defaults for every `State` under a `StateKitProvider`.
+ * Instance props on `State` override these. `loading`, `error`, `empty`,
+ * and `children` are never taken from the provider.
+ */
+export type StateDefaults = Omit<
+  StateProps,
+  'loading' | 'error' | 'empty' | 'children'
+>;

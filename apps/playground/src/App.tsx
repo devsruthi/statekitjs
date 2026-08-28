@@ -33,6 +33,7 @@ import {
   CODE_LOADING_DEFAULT,
   CODE_PROBLEM,
   CODE_PROGRESS_LOADER,
+  CODE_PROVIDER,
   CODE_QUICK_START,
   CODE_SOLUTION,
   LOADER_GALLERY_TYPES,
@@ -1300,6 +1301,20 @@ export function App() {
               </p>
             </div>
             <CodeBlock code={CODE_QUICK_START} />
+          </section>
+
+          <section id="provider" className="docs-section">
+            <div className="section-head">
+              <h2>Theme provider</h2>
+              <p>
+                Wrap the app in <code>StateKitProvider</code> to apply loader,
+                copy, and colors once. Local <code>State</code> props still
+                override the provider. Use this when the host app already has a
+                brand theme and you do not want to pass <code>loaderColor</code>{' '}
+                on every screen.
+              </p>
+            </div>
+            <CodeBlock code={CODE_PROVIDER} />
           </section>
 
           <section id="why" className="docs-section">

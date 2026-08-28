@@ -15,6 +15,7 @@ export const NAV_GROUPS = [
     items: [
       { id: 'installation', label: 'Installation' },
       { id: 'quick-start', label: 'Quick Start' },
+      { id: 'provider', label: 'Theme provider' },
       { id: 'why', label: 'Why StateKitJS' },
     ],
   },
@@ -384,6 +385,38 @@ function UsersPage({ loading, error, users }) {
     </State>
   );
 }`;
+
+export const CODE_PROVIDER = `import { State, StateKitProvider } from '@statekitjs/react';
+
+const theme = {
+  primary: '#0F6E6A',
+};
+
+export function App() {
+  return (
+    <StateKitProvider
+      loaderType="activity"
+      loaderColor={[theme.primary]}
+      loaderSize="md"
+      errorRetryLabel="Try again"
+    >
+      <UsersPage />
+    </StateKitProvider>
+  );
+}
+
+function UsersPage({ loading, error, users }) {
+  return (
+    <State loading={loading} error={error} empty={!users.length}>
+      <UsersTable users={users} />
+    </State>
+  );
+}
+
+// Override one screen without changing the rest of the app:
+<State loading loaderType="dots">
+  <UsersTable users={users} />
+</State>`;
 
 export const CODE_LOADING_DEFAULT = `<State loading>
   <UsersTable users={users} />
