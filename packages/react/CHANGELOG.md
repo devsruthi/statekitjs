@@ -1,5 +1,11 @@
 # @statekitjs/react
 
+## 0.3.0
+
+### Minor Changes
+
+- 9f91834: Add StateKitProvider so apps can set brand loader, colors, and copy once.
+
 ## 0.2.2
 
 ### Patch Changes
